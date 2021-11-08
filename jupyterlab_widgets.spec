@@ -4,7 +4,7 @@
 #
 Name     : jupyterlab_widgets
 Version  : 1.0.2
-Release  : 11
+Release  : 12
 URL      : https://files.pythonhosted.org/packages/27/f1/0d3a09c0069467ed9636faf3a9b5b758378216bb891066a0bc24799681e3/jupyterlab_widgets-1.0.2.tar.gz
 Source0  : https://files.pythonhosted.org/packages/27/f1/0d3a09c0069467ed9636faf3a9b5b758378216bb891066a0bc24799681e3/jupyterlab_widgets-1.0.2.tar.gz
 Summary  : A JupyterLab extension.
@@ -17,6 +17,7 @@ Requires: jupyterlab_widgets-python3 = %{version}-%{release}
 Requires: jupyter-packaging
 BuildRequires : buildreq-distutils3
 BuildRequires : jupyter-packaging
+Patch1: build.patch
 
 %description
 Jupyter Widgets JupyterLab Extension
@@ -61,13 +62,14 @@ python3 components for the jupyterlab_widgets package.
 %prep
 %setup -q -n jupyterlab_widgets-1.0.2
 cd %{_builddir}/jupyterlab_widgets-1.0.2
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1631721595
+export SOURCE_DATE_EPOCH=1636403242
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
